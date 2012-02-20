@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WindowsFormsApplication1")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("aideNotebook CPU Controller by alexleekt.com")]
+[assembly: AssemblyDescription("Control your CPU Max Frequency easily to minimize power consumption and extend your battery life on the go!")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("WindowsFormsApplication1")]
-[assembly: AssemblyCopyright("Copyright ©  2012")]
+[assembly: AssemblyCompany("alexleekt.com")]
+[assembly: AssemblyProduct("aideNotebook")]
+[assembly: AssemblyCopyright("Copyright ©  2012 Kwan Ting Lee")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
