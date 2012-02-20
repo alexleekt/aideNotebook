@@ -59,5 +59,21 @@ namespace com.alexleekt.aideNotebook.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to aideNotebook.
+        /// </summary>
+        internal static string APP_NAME {
+            get {
+                return ResourceManager.GetString("APP_NAME", resourceCulture);
+            }
+        }
+        
+        internal static System.Drawing.Bitmap cpu_frequency_image {
+            get {
+                object obj = ResourceManager.GetObject("cpu_frequency_image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
