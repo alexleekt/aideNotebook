@@ -60,6 +60,13 @@ namespace com.alexleekt.aideNotebook.Properties {
             }
         }
         
+        internal static System.Drawing.Icon _1329647247_cpu {
+            get {
+                object obj = ResourceManager.GetObject("_1329647247_cpu", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to aideNotebook.
         /// </summary>

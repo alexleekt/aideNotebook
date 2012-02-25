@@ -76,7 +76,7 @@ namespace com.alexleekt.aideNotebook
 
         private void HUD_Load(object sender, EventArgs e)
         {
-            hkm.RegisterGlobalHotKey(this.Name, this.Handle, Keys.Space, HotkeyManager.MOD_SHIFT);
+            hkm.RegisterGlobalHotKey(this.Name, this.Handle, Keys.Oemtilde, HotkeyManager.MOD_ALT);
         }
 
         private void HUD_FormClosed(object sender, FormClosedEventArgs e)
