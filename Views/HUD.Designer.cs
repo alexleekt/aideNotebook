@@ -60,7 +60,6 @@
             this.lblPercentage.TabIndex = 1;
             this.lblPercentage.Text = " [[ % ]]";
             this.lblPercentage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblPercentage.Click += new System.EventHandler(this.lblPercentage_Click);
             // 
             // label1
             // 
@@ -111,6 +110,7 @@
             this.TransparencyKey = System.Drawing.SystemColors.Highlight;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HUD_FormClosed);
             this.Load += new System.EventHandler(this.HUD_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.hudKeyDownHandler);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.ResumeLayout(false);
             this.PerformLayout();

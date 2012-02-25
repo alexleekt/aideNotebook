@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -52,6 +52,10 @@ namespace com.alexleekt.aideNotebook
 
             setupCurrentCpuMaxFrequencyPercentageLabels();
         }
+        
+        // Sets the window to be foreground
+        [DllImport("User32")]
+        private static extern int SetForegroundWindow(IntPtr hwnd);
 
         private void setupCurrentCpuMaxFrequencyPercentageLabels()
         {
@@ -93,7 +97,7 @@ namespace com.alexleekt.aideNotebook
             const int WM_HOTKEY = 0x312;
             if (m.Msg == WM_HOTKEY)
             {
-                doSwitchNextCpuMaxFrequencyPercentage();
+                toggleHudVisibility();
             }
         }
 
@@ -129,22 +133,43 @@ namespace com.alexleekt.aideNotebook
 
         private void repaintCpuMaxFrequencyPercentageLabels(int percentage, String description)
         {
-            Timer.Stop();
-            this.Visible = true;
             this.lblPercentage.Text = String.Format("{0}%", percentage);
             this.lblDescription.Text = description;
-            Timer.Start();
         }
 
-        void hudTimer_Tick(object sender, EventArgs e)
+        private void toggleHudVisibility()
         {
-            this.Visible = false;
+            if (this.Visible)
+            {
+                this.Visible = false;
+                Timer.Stop();
+            }
+            else
+            {
+                Timer.Stop();
+                this.Visible = true;
+                SetForegroundWindow(this.Handle);
+                Timer.Start();
+            }
+        }
+
+        private void hudTimer_Tick(object sender, EventArgs e)
+        {
+            toggleHudVisibility();
+        }
+
+        private void hudKeyDownHandler(object sender, KeyEventArgs e)
+        {
             Timer.Stop();
-        }
-
-        private void lblPercentage_Click(object sender, EventArgs e)
-        {
-            doSwitchNextCpuMaxFrequencyPercentage();
+            switch (e.KeyCode)
+            {
+                case Keys.Space:
+                    doSwitchNextCpuMaxFrequencyPercentage();
+                    break;
+                default:
+                    return;
+            }
+            Timer.Start();
         }
 
     }
