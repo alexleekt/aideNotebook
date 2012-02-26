@@ -25,7 +25,9 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ProductName>aideNotebook</ProductName>
+    <PublisherName>alexleekt.com</PublisherName>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -52,7 +54,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\1329647247_cpu.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
@@ -86,8 +89,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BrightnessController.cs" />
+    <Compile Include="Controllers\ConsoleAppRunner.cs" />
     <Compile Include="Controllers\FrequencyController.cs" />
     <Compile Include="Controllers\HotkeyManager.cs" />
+    <Compile Include="Controllers\VolumeController.cs" />
     <Compile Include="DataObjects\PowerProfile.cs" />
     <Compile Include="Views\HUD.cs">
       <SubType>Form</SubType>
@@ -147,7 +153,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\1329647247_cpu.ico" />
+    <None Include="Resources\512px_voume_mute.png" />
+    <Content Include="Resources\nircmd.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

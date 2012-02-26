@@ -51,6 +51,7 @@ namespace com.alexleekt.aideNotebook
             SystemEvents.PowerModeChanged += new PowerModeChangedEventHandler(SystemEvents_PowerModeChanged);
 
             setupCurrentCpuMaxFrequencyPercentageLabels();
+            TimerHud.Start();
         }
         
         // Sets the window to be foreground
@@ -103,32 +104,34 @@ namespace com.alexleekt.aideNotebook
 
         #endregion
 
-        private System.Windows.Forms.Timer _timer;
-        public System.Windows.Forms.Timer Timer
+        private System.Windows.Forms.Timer _timerHud;
+        public System.Windows.Forms.Timer TimerHud
         {
             get
             {
-                if (_timer == null)
+                if (_timerHud == null)
                 {
-                    _timer = new System.Windows.Forms.Timer();
-                    _timer.Tick += new EventHandler(hudTimer_Tick);
-                    _timer.Interval = Properties.Settings.Default.HUD_Timeout;
+                    _timerHud = new System.Windows.Forms.Timer();
+                    _timerHud.Tick += new EventHandler(hudTimer_Tick);
+                    _timerHud.Interval = Properties.Settings.Default.HUD_Timeout;
                 }
-                return _timer;
+                return _timerHud;
             }
         }
 
-        private void doSwitchNextCpuMaxFrequencyPercentage()
+        private System.Windows.Forms.Timer _timerExtraControl;
+        public System.Windows.Forms.Timer TimerExtraControl
         {
-            if (this.Visible)
+            get
             {
-                KeyValuePair<int, String> nextCpuMaxFrequencyPercentage = FrequencyController.GetNextFrequencyPercentage(PowerCfgController.GetMaximumPowerStatePercentage(null, PowerCfgController.GetCurrentPowerSource()));
-                PowerCfgController.SetMaximumPowerState(null, PowerCfgController.GetCurrentPowerSource(), nextCpuMaxFrequencyPercentage.Key);
-                
-                currentCpuMaxFrequencyPercentage = nextCpuMaxFrequencyPercentage;
+                if (_timerExtraControl == null)
+                {
+                    _timerExtraControl = new System.Windows.Forms.Timer();
+                    _timerExtraControl.Tick += new EventHandler(timerExtraControl_Tick);
+                    _timerExtraControl.Interval = Properties.Settings.Default.ExtraControl_Timeout;
+                }
+                return _timerExtraControl;
             }
-
-            repaintCpuMaxFrequencyPercentageLabels(currentCpuMaxFrequencyPercentage.Key, currentCpuMaxFrequencyPercentage.Value);
         }
 
         private void repaintCpuMaxFrequencyPercentageLabels(int percentage, String description)
@@ -142,14 +145,14 @@ namespace com.alexleekt.aideNotebook
             if (this.Visible)
             {
                 this.Visible = false;
-                Timer.Stop();
+                TimerHud.Stop();
             }
             else
             {
-                Timer.Stop();
+                TimerHud.Stop();
                 this.Visible = true;
                 SetForegroundWindow(this.Handle);
-                Timer.Start();
+                TimerHud.Start();
             }
         }
 
@@ -158,18 +161,72 @@ namespace com.alexleekt.aideNotebook
             toggleHudVisibility();
         }
 
+        void timerExtraControl_Tick(object sender, EventArgs e)
+        {
+            this.pbExtraControlLogo.Visible = false;
+            this.lblExtraControlText.Visible = false;
+        }
+
+        private void repaintExtraControlLogoAndText(Image logo, String text)
+        {
+            TimerExtraControl.Stop();
+
+            this.pbExtraControlLogo.Image = logo;
+            this.lblExtraControlText.Text = text;
+
+            this.pbExtraControlLogo.Visible = true;
+            this.lblExtraControlText.Visible = true;
+
+            TimerExtraControl.Start();
+        }
+
         private void hudKeyDownHandler(object sender, KeyEventArgs e)
         {
-            Timer.Stop();
+            TimerHud.Stop();
             switch (e.KeyCode)
             {
-                case Keys.Space:
-                    doSwitchNextCpuMaxFrequencyPercentage();
+                case Keys.Space: //change the cpu cap speed
+                    KeyValuePair<int, String> nextCpuMaxFrequencyPercentage = FrequencyController.GetNextFrequencyPercentage(PowerCfgController.GetMaximumPowerStatePercentage(null, PowerCfgController.GetCurrentPowerSource()));
+                    PowerCfgController.SetMaximumPowerState(null, PowerCfgController.GetCurrentPowerSource(), nextCpuMaxFrequencyPercentage.Key);
+                    repaintCpuMaxFrequencyPercentageLabels(nextCpuMaxFrequencyPercentage.Key, nextCpuMaxFrequencyPercentage.Value);
                     break;
-                default:
-                    return;
+                case Keys.Right: //brightness up
+                case Keys.OemCloseBrackets:
+                    repaintExtraControlLogoAndText(
+                        global::com.alexleekt.aideNotebook.Properties.Resources._512px_brightness,
+                        "+");
+                    BrightnessController.IncreaseBrightness();
+                    break;
+                case Keys.Left: //brightness down
+                case Keys.OemOpenBrackets:
+                    repaintExtraControlLogoAndText(
+                        global::com.alexleekt.aideNotebook.Properties.Resources._512px_brightness,
+                        "-");
+                    BrightnessController.DecreaseBrightness();
+                    break;
+                case Keys.Up: //volume up
+                case Keys.Oemplus:
+                    repaintExtraControlLogoAndText(
+                        global::com.alexleekt.aideNotebook.Properties.Resources._512px_volume,
+                        "+");
+                    VolumeController.IncreaseVolume();
+                    break;
+                case Keys.Down: //volume down
+                case Keys.OemMinus:
+                    repaintExtraControlLogoAndText(
+                        global::com.alexleekt.aideNotebook.Properties.Resources._512px_volume,
+                        "-");
+                    VolumeController.DecreaseVolume();
+                    break;
+                case Keys.M: //mute
+                case Keys.D0:
+                    repaintExtraControlLogoAndText(
+                        global::com.alexleekt.aideNotebook.Properties.Resources._512px_voume_mute,
+                        "Mute");
+                    VolumeController.Mute();
+                    break;
             }
-            Timer.Start();
+            TimerHud.Start();
         }
 
     }

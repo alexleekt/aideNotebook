@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Diagnostics;
 using System.Text.RegularExpressions;
 
 using System.Windows.Forms;
@@ -34,17 +33,7 @@ namespace com.alexleekt.aideNotebook
 
         private static String ExecutePowerCfg(String args)
         {
-            // http://stackoverflow.com/questions/206323/how-to-execute-command-line-in-c-get-std-out-results
-            Process p = new Process();
-            p.StartInfo.FileName = APP_POWERCFG;
-            p.StartInfo.Arguments = args;
-            p.StartInfo.UseShellExecute = false;
-            p.StartInfo.CreateNoWindow = true;
-            p.StartInfo.RedirectStandardOutput = true;
-            p.Start();
-            String output = p.StandardOutput.ReadToEnd();
-            p.WaitForExit();
-            return output;
+            return ConsoleAppRunner.Execute(APP_POWERCFG, args);
         }
 
         public static PowerProfile GetActiveScheme()

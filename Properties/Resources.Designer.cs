@@ -67,6 +67,27 @@ namespace com.alexleekt.aideNotebook.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap _512px_brightness {
+            get {
+                object obj = ResourceManager.GetObject("_512px_brightness", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap _512px_volume {
+            get {
+                object obj = ResourceManager.GetObject("_512px_volume", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap _512px_voume_mute {
+            get {
+                object obj = ResourceManager.GetObject("_512px_voume_mute", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to aideNotebook.
         /// </summary>

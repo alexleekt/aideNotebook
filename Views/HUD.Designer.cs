@@ -30,8 +30,10 @@
         {
             this.lblDescription = new System.Windows.Forms.Label();
             this.lblPercentage = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.pbExtraControlLogo = new System.Windows.Forms.PictureBox();
+            this.lblExtraControlText = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pbExtraControlLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // lblDescription
@@ -61,18 +63,6 @@
             this.lblPercentage.Text = " [[ % ]]";
             this.lblPercentage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(428, 132);
-            this.label1.Margin = new System.Windows.Forms.Padding(0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(123, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "(Shift+Space for presets)";
-            // 
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
@@ -89,13 +79,35 @@
             this.label2.Text = "aideNotebook";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // pbExtraControlLogo
+            // 
+            this.pbExtraControlLogo.Location = new System.Drawing.Point(407, 107);
+            this.pbExtraControlLogo.Name = "pbExtraControlLogo";
+            this.pbExtraControlLogo.Size = new System.Drawing.Size(32, 32);
+            this.pbExtraControlLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbExtraControlLogo.TabIndex = 5;
+            this.pbExtraControlLogo.TabStop = false;
+            // 
+            // lblExtraControlText
+            // 
+            this.lblExtraControlText.AutoSize = true;
+            this.lblExtraControlText.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblExtraControlText.Location = new System.Drawing.Point(438, 107);
+            this.lblExtraControlText.Name = "lblExtraControlText";
+            this.lblExtraControlText.Size = new System.Drawing.Size(50, 25);
+            this.lblExtraControlText.TabIndex = 6;
+            this.lblExtraControlText.Text = "+/-";
+            this.lblExtraControlText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblExtraControlText.Visible = false;
+            // 
             // HUD
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.MenuBar;
             this.ClientSize = new System.Drawing.Size(560, 154);
+            this.Controls.Add(this.lblExtraControlText);
+            this.Controls.Add(this.pbExtraControlLogo);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.lblPercentage);
             this.Cursor = System.Windows.Forms.Cursors.Default;
@@ -112,6 +124,7 @@
             this.Load += new System.EventHandler(this.HUD_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.hudKeyDownHandler);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
+            ((System.ComponentModel.ISupportInitialize)(this.pbExtraControlLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -121,8 +134,9 @@
 
         private System.Windows.Forms.Label lblPercentage;
         private System.Windows.Forms.Label lblDescription;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pbExtraControlLogo;
+        private System.Windows.Forms.Label lblExtraControlText;
     }
 }
 

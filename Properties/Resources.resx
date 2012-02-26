@@ -499,8 +499,18 @@
         cprG/eb/bl6B5hVoXoHmFWhegeYV+M+yAv8/A/Oc6SEJxncAAAAASUVORK5CYII=
 </value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="_1329647247_cpu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1329647247_cpu.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_512px_brightness" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\512px_brightness.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_512px_volume" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\512px_volume.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="_512px_voume_mute" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\512px_voume_mute.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

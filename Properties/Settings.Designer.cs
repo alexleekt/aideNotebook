@@ -31,5 +31,14 @@ namespace com.alexleekt.aideNotebook.Properties {
                 return ((int)(this["HUD_Timeout"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("300")]
+        public int ExtraControl_Timeout {
+            get {
+                return ((int)(this["ExtraControl_Timeout"]));
+            }
+        }
     }
 }
