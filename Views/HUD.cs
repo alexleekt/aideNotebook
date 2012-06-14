@@ -185,6 +185,9 @@ namespace com.alexleekt.aideNotebook
             TimerHud.Stop();
             switch (e.KeyCode)
             {
+                case Keys.Escape:
+                    toggleHudVisibility();
+                    return;
                 case Keys.Space: //change the cpu cap speed
                     KeyValuePair<int, String> nextCpuMaxFrequencyPercentage = FrequencyController.GetNextFrequencyPercentage(PowerCfgController.GetMaximumPowerStatePercentage(null, PowerCfgController.GetCurrentPowerSource()));
                     PowerCfgController.SetMaximumPowerState(null, PowerCfgController.GetCurrentPowerSource(), nextCpuMaxFrequencyPercentage.Key);
